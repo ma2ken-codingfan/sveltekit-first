@@ -1,22 +1,25 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import type { PageData } from './$types'
 
-  type User = {
-    name: string
-  }
+  export let data: PageData
+  //import { onMount } from 'svelte'
 
-  let users: User[] = []
+  // type User = {
+  //   name: string
+  // }
 
-  onMount( async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    const data = await response.json()
-    users = data
-  } )
+  // let users: User[] = []
+
+  // onMount( async () => {
+  //   const response = await fetch('https://jsonplaceholder.typicode.com/users')
+  //   const data = await response.json()
+  //   users = data
+  // } )
 </script>
 <h1>ユーザー一覧</h1>
 
 <ul>
-  {#each users as user }
+  {#each data.users as user }
     <li>{user.name}</li>
   {/each}
 </ul>
